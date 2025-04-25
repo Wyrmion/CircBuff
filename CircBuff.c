@@ -11,7 +11,7 @@
 #include "CircBuff.h"
 #include "string.h"
 #include <stdlib.h>
-#include "../../Memory/Heap/my_heap.h"
+#include "../../Memory/MyHeap/my_heap.h"
 
 /**
  * @addtogroup CircBuff 
@@ -60,7 +60,7 @@ struct CircBuff{
 /**
  * @brief this func provide code for CircBuff constructor
  * 
- * @param payloadarr pointer to @ref InterfaceCmdData_t
+ * @param size CircBuff buffer size
  * @param depth circ buff depth
  * @return mem addr if mem allocated, NULL - else
  */
