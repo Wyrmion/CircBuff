@@ -3,8 +3,6 @@
  * @file     CmdCircBuff.C
  * @author   Kukushkin A.V.
  * @brief    This file provides code for Circl Buffer 
- * @note     if you not use malloc plz set global define CIRC_BUFF_NO_MALLOC_CNT=N,
- *           there N is number of need @ref CircBuff_t 
  * @version  V1.0.1
  * @date     29. Oct. 2024
  *************************************************************************
@@ -13,7 +11,7 @@
 #include "CircBuff.h"
 #include "string.h"
 #include <stdlib.h>
-#include "Heap/my_heap.h"
+#include "../../Memory/Heap/my_heap.h"
 
 /**
  * @addtogroup CircBuff 
