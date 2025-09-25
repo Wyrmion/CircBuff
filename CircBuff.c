@@ -3,15 +3,15 @@
  * @file     CmdCircBuff.C
  * @author   Kukushkin A.V.
  * @brief    This file provides code for Circl Buffer 
- * @version  V1.0.1
- * @date     29. Oct. 2024
+ * @version  V1.0.2
+ * @date     25. Sep. 2025
  *************************************************************************
  */
  
 #include "CircBuff.h"
 #include "string.h"
 #include <stdlib.h>
-#include "../../Memory/MyHeap/my_heap.h"
+#include "../WHeap/wheap.h"
 
 /**
  * @addtogroup CircBuff 
