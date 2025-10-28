@@ -1,4 +1,4 @@
-1) For use it plz clone https://gitflic.ru/project/wyrm/wheap
+1) For use it plz clone https://github.com/Wyrmion/wheap
 
 2) Call constructor 
 
@@ -22,4 +22,5 @@ if(CircBuff_IsFree(cthis->CircBuffRx))
     return;
 else 
     CircBuff_pop(cthis->CircBuffRx,dst,&leng);
+
 ~~~
