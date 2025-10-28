@@ -1,17 +1,17 @@
 /**
  ****************************************************************************
  * @file     CmdCircBuff.C
- * @author   Kukushkin A.V.
+ * @author   Wyrm
  * @brief    This file provides code for Circl Buffer 
  * @version  V1.0.2
- * @date     25. Sep. 2025
+ * @date     28. Oct. 2025
  *************************************************************************
  */
- 
-#include "CircBuff.h"
-#include "string.h"
+#include <string.h>
 #include <stdlib.h>
-#include "../WHeap/wheap.h"
+
+#include "CircBuff.h"
+#include "wheap.h"
 
 /**
  * @addtogroup CircBuff 

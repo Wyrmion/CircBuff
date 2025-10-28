@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
   * @file     CircBuff.h
-  * @author   Kukushkin A.V.
-  * @brief    Header file for test BVBoard
+  * @author   Wyrm
+  * @brief    Header file for CircBuff.c
   * @version  V1.0.0
   * @date     15 Dec .2024
   ******************************************************************************
