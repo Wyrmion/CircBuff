@@ -64,7 +64,7 @@ struct CircBuff{
  * @param depth circ buff depth
  * @return mem addr if mem allocated, NULL - else
  */
-CircBuff_t* CircBuff_ctor(size_t size,uint32_t depth)
+CircBuff_t* CircBuff_ctor(uint32_t size,uint32_t depth)
 {
   if((depth==0)||(size == 0))
     return NULL;

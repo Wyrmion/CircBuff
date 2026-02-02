@@ -3,8 +3,8 @@
   * @file     CircBuff.h
   * @author   Wyrm
   * @brief    Header file for CircBuff.c
-  * @version  V1.0.0
-  * @date     15 Dec .2024
+  * @version  V1.0.1
+  * @date     02 Feb .2026
   ******************************************************************************
   */ 
 
@@ -48,7 +48,7 @@ typedef struct CircBuff CircBuff_t; /*!< CircBuff class declaration*/
    * @defgroup CircBuff_public_ctor_dtor CircBuff constructor/destructor
    * @{
    */
-  CircBuff_t* CircBuff_ctor(size_t size,size_t dept);
+  CircBuff_t* CircBuff_ctor(uint32_t size,uint32_t dept);
   void        CircBuff_dctor(CircBuff_t* this);
   /** @}*/
 
