@@ -2,9 +2,9 @@
  ****************************************************************************
  * @file     CmdCircBuff.C
  * @author   Wyrm
- * @brief    This file provides code for Circl Buffer 
- * @version  V1.0.2
- * @date     28. Oct. 2025
+ * @brief    cthis file provides code for Circl Buffer 
+ * @version  V1.0.4
+ * @date     26. Oct. 2026
  *************************************************************************
  */
 #include <string.h>
@@ -58,7 +58,7 @@ struct CircBuff{
 
 
 /**
- * @brief this func provide code for CircBuff constructor
+ * @brief cthis func provide code for CircBuff constructor
  * 
  * @param size CircBuff buffer size
  * @param depth circ buff depth
@@ -69,107 +69,107 @@ CircBuff_t* CircBuff_ctor(uint32_t size,uint32_t depth)
   if((depth==0)||(size == 0))
     return NULL;
 
-  CircBuff_t* this = NULL;
+  CircBuff_t* cthis = NULL;
 
-  if((this = (CircBuff_t*)heap_malloc(sizeof(CircBuff_t)))==NULL)
+  if((cthis = (CircBuff_t*)heap_malloc(sizeof(CircBuff_t)))==NULL)
     while(1); /* Bug catch */
   
-  if((this->payload = heap_malloc(size*depth))==NULL)
+  if((cthis->payload = heap_malloc(size*depth))==NULL)
     while(1); /* Bug catch*/
     
-  if((this->info = heap_malloc(sizeof(sPayloadInfo)*depth))==NULL)
+  if((cthis->info = heap_malloc(sizeof(sPayloadInfo)*depth))==NULL)
     while(1);
     
-  this->max_size = size;
+  cthis->max_size = size;
   
-  this->depth = depth;
-  this->head = 0;
-  this->tail = 0;
+  cthis->depth = depth;
+  cthis->head = 0;
+  cthis->tail = 0;
 
-  return this;
+  return cthis;
 }
 
 /**
- * @brief this is destructor
+ * @brief cthis is destructor
  * 
- * @param this is pointer to @ref CircBuff_t
+ * @param cthis is pointer to @ref CircBuff_t
  */
-void  CircBuff_dctor(CircBuff_t* this)
+void  CircBuff_dctor(CircBuff_t* cthis)
 {
-  heap_free(this->payload);
-  heap_free(this->info);
-  heap_free(this);
+  heap_free(cthis->payload);
+  heap_free(cthis->info);
+  heap_free(cthis);
   
   return; 
 }
 
 /**
- * @brief this func provide code for push data in CircBuff class
+ * @brief cthis func provide code for push data in CircBuff class
  * 
- * @param this pointer to @ref CircBuff 
+ * @param cthis pointer to @ref CircBuff 
  * @param src   pointer to data
  * @param len   data len
  * @return true  if successful push
  * @return false if circular buffer is overflow
  */
-bool  CircBuff_push(CircBuff_t* this,const uint8_t* src,const size_t len)
+bool  CircBuff_push(CircBuff_t* cthis,const uint8_t* src,const size_t len)
 {
-  if(len>this->max_size)
+  if(len>cthis->max_size)
     return false;
 
   int next;
    
-  next = this->head + 1;              /* next is where head will point to after this write. */
-  if (next >= this->depth) 
+  next = cthis->head + 1;              /* next is where head will point to after cthis write. */
+  if (next >= cthis->depth) 
     next=0;
 
-  if (next == this->tail)             /* if the head + 1 == tail, circular buffer is full  */
+  if (next == cthis->tail)             /* if the head + 1 == tail, circular buffer is full  */
     return false;
   
-  this->info[this->head].leng = len;  /* Save data leng information */
-  memcpy(this->payload+(this->head*this->max_size),src,len);
+  cthis->info[cthis->head].leng = len;  /* Save data leng information */
+  memcpy(cthis->payload+(cthis->head*cthis->max_size),src,len);
 
-  this->head = next;                  /* head to next data offset. */
+  cthis->head = next;                  /* head to next data offset. */
   return true;                        /* return success to indicate successful push. */
 }
 
 /**
  * @brief Push data from CircBuff class
  * 
- * @param this   pointer to @ref CircBuff 
+ * @param cthis   pointer to @ref CircBuff 
  * @param dst     pointer to output data
  * @param len     pointer to leng of data
  * @return true   if successful pop
  * @return false  if we don't have any data
  */
-bool  CircBuff_pop(CircBuff_t* this,uint8_t *dst,size_t* len)
+bool  CircBuff_pop(CircBuff_t* cthis,uint8_t *dst,size_t* len)
 {
   int next;
 
-  if (this->head == this->tail)  // if the head == tail, we don't have any data
+  if (cthis->head == cthis->tail)  // if the head == tail, we don't have any data
     return false;
 
-  next = this->tail + 1;  // next is where tail will point to after this read.
-  if(next >= this->depth)
+  next = cthis->tail + 1;  // next is where tail will point to after cthis read.
+  if(next >= cthis->depth)
     next = 0;
 
-  *len = this->info[this->tail].leng; 
-  memcpy(dst,this->payload+(this->tail*this->max_size),this->info[this->tail].leng);
+  *len = cthis->info[cthis->tail].leng; 
+  memcpy(dst,cthis->payload+(cthis->tail*cthis->max_size),cthis->info[cthis->tail].leng);
     
-  this->tail = next;              // tail to next offset.
+  cthis->tail = next;              // tail to next offset.
   return true;  // return success to indicate successful pop.
 }
 
 /**
- * @brief this code code for get buffer free state
+ * @brief cthis code code for get buffer free state
  * 
- * @param this pointer to @ref CircBuff 
+ * @param cthis pointer to @ref CircBuff 
  * @return true is buffer free
  * @return false is have some data
  */
-bool  CircBuff_IsFree(const CircBuff_t* this)
+bool  CircBuff_IsFree(const CircBuff_t* cthis)
 {
-    if (this->head == this->tail)  
+    if (cthis->head == cthis->tail)  
       return true;
     else
       return false;
@@ -177,13 +177,13 @@ bool  CircBuff_IsFree(const CircBuff_t* this)
 /**
  * @brief Return data leng if Circbuff is not free
  * 
- * @param this pointer to @ref CircBuff 
+ * @param cthis pointer to @ref CircBuff 
  * @return size_t data leng if buffer not empty and 0 if empty
  */
-size_t CircBuff_getLastDataleng(CircBuff_t* this)
+size_t CircBuff_getLastDataleng(CircBuff_t* cthis)
 {
-  if(!CircBuff_IsFree(this))
-    return this->info[this->tail].leng;
+  if(!CircBuff_IsFree(cthis))
+    return cthis->info[cthis->tail].leng;
   else  
     return 0;
 }
@@ -191,10 +191,10 @@ size_t CircBuff_getLastDataleng(CircBuff_t* this)
 /**
  * @brief Returns the amount of pushed message stored
  * 
- * @param this pointer to @ref CircBuff 
+ * @param cthis pointer to @ref CircBuff 
  * @return size_t msg count
  */
-size_t CircBuff_getPushedMsgCount(const CircBuff_t* this){return this->head - this->tail;};
+size_t CircBuff_getPushedMsgCount(const CircBuff_t* cthis){return cthis->head - cthis->tail;};
 /**/
 
 
